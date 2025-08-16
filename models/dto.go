@@ -8,3 +8,12 @@ type ProfileResponse struct {
 	Email     string    `json:"email"`
 	CreatedAt time.Time `json:"created_at"`
 }
+
+type CreateTransactionRequest struct {
+	AssetType       string    `json:"asset_type" binding:"required"`
+	AssetName       string    `json:"asset_name" binding:"required"`
+	Quantity        int       `json:"quantity" binding:"required"`
+	Price           float64   `json:"price" binding:"required"`
+	TransactionType string    `json:"transaction_type" binding:"required,oneof=buy sell"`
+	TransactionDate time.Time `json:"transaction_date" binding:"required"`
+}

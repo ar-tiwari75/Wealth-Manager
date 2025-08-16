@@ -37,5 +37,5 @@ func Connect() {
 	fmt.Println("✅ Connected to MySQL database successfully")
 
 	// Auto migrate the User model
-	DB.AutoMigrate(&models.User{})
+	DB.AutoMigrate(&models.User{}, &models.Transaction{}, &models.Portfolio{})
 }

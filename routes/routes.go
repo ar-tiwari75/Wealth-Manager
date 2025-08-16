@@ -21,5 +21,7 @@ func RegisterRoutes(r *gin.Engine) {
 	protected.Use(middleware.AuthMiddleWare())
 	{
 		protected.GET("/profile", controllers.GetProfile)
+		protected.GET("/transactions", controllers.GetTransactions)
+		protected.POST("/transactions", controllers.CreateTransaction)
 	}
 }
