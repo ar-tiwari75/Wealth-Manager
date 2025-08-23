@@ -21,9 +21,24 @@ func GetTransactions(c *gin.Context) {
 		return
 	}
 
+	// Convert []Transaction model to []TransactionResponse DTO
+	var response []models.TransactionResponse
+	for _, t := range transactions {
+		response = append(response, models.TransactionResponse{
+			ID:              t.ID,
+			AssetType:       t.AssetType,
+			AssetName:       t.AssetName,
+			Quantity:        t.Quantity,
+			Price:           t.Price,
+			TransactionType: t.TransactionType,
+			TransactionDate: t.TransactionDate,
+			CreatedAt:       t.CreatedAt,
+		})
+	}
+
 	c.JSON(http.StatusOK, gin.H{
 		"message":      "Transactions fetched successfully",
-		"transactions": transactions,
+		"transactions": response,
 	})
 }
 

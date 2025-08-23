@@ -17,3 +17,14 @@ type CreateTransactionRequest struct {
 	TransactionType string    `json:"transaction_type" binding:"required,oneof=buy sell"`
 	TransactionDate time.Time `json:"transaction_date" binding:"required"`
 }
+
+type TransactionResponse struct {
+	ID              uint      `json:"id"`
+	AssetType       string    `json:"asset_type"`
+	AssetName       string    `json:"asset_name"`
+	Quantity        int       `json:"quantity"`
+	Price           float64   `json:"price"`
+	TransactionType string    `json:"transaction_type"`
+	TransactionDate time.Time `json:"transaction_date"`
+	CreatedAt       time.Time `json:"created_at"`
+}
